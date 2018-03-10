@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'app-new-author',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-author.component.css']
 })
 export class NewAuthorComponent implements OnInit {
+    newAuthor: any;
 
-  constructor() { }
+    constructor(private _httpService: HttpService) { 
+        this.newAuthor = {name: ''}
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    submitAuthor() {
+        let observable = this._httpService.addAuthor(this.newAuthor);
+        observable.subscribe(data => {
+            console.log(data);
+        })
+
+        this.newAuthor = {name: ''};
+    }
 
 }

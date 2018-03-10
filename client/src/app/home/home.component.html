@@ -1,3 +1,10 @@
 <p>
   home works!
 </p>
+
+<div *ngFor = "let author of authors">
+    <h3>{{ author.name }}</h3>
+    <button [routerLink] = "['../quotes/', author._id]">View Quotes</button>
+    <button [routerLink] = "['../editAuthor', author._id]">Edit</button>
+    <button (click) = "deleteAuthor(author._id)">Delete</button>
+</div>

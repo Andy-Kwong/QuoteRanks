@@ -10,6 +10,10 @@ import { AddQuoteComponent } from './add-quote/add-quote.component';
 import { EditAuthorComponent } from './edit-author/edit-author.component';
 import { QuotesComponent } from './quotes/quotes.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
+
 
 @NgModule({
   declarations: [
@@ -22,9 +26,11 @@ import { QuotesComponent } from './quotes/quotes.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
